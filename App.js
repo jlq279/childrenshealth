@@ -2,6 +2,42 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
+
+
+// Import the functions you need from the SDKs you need
+import * as firebase from 'firebase';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAQcYQJ1rS3gJXRwBGju98AKpT7OSmtPM4",
+  authDomain: "children-s-health-proje.firebaseapp.com",
+  databaseURL: "https://children-s-health-proje-default-rtdb.firebaseio.com",
+  projectId: "children-s-health-proje",
+  storageBucket: "children-s-health-proje.appspot.com",
+  messagingSenderId: "945921462289",
+  appId: "1:945921462289:web:a538cc3e649427a6ac21b0",
+  measurementId: "G-4VDY1NJ5B5"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+/*
+import { getDatabase, ref, onValue } from 'firebase/database';
+
+function storeHighScore(userId, score) {
+  const db = getDatabase();
+  const reference = ref(db, 'users/' + userId);
+  set(ref(db, 'users/' + userId), {
+    highscore: score,
+  });
+}
+*/
 export default function App() {
   const todoItems = ["Quest 1", "Quest 2"];
   const[test, testState] = useState(0);

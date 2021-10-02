@@ -1,6 +1,5 @@
 {
   "expo": {
-<<<<<<< HEAD
     "name": "hackdfw2021",
     "slug": "hackdfw2021",
     "version": "1.0.0",
@@ -30,14 +29,4 @@
       "favicon": "./assets/favicon.png"
     }
   }
-=======
-    "name": "childrenhealth",
-    "slug": "childrenhealth",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  },
-  "name": "childrenhealth"
->>>>>>> 7a857cde8506c7c5318a6f75468d7a31910901e4
 }
