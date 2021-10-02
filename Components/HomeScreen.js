@@ -8,19 +8,20 @@ import TodoList from './TodoList';
 const HomeScreen = ({navigation, route}) => {
     const todoItems = ["Quest 1", "Quest 2"];
     const [test, testState] = useState(0);
+    
     const [data, setData] = useState([
       {
-        value: "value0",
+        value: "Take Inhaler",
         key: Math.random().toString(),
       },
       {
-        value: "value1",
+        value: "Exercise",
         key: Math.random().toString(),
       },
       {
-        value: "value2",
+        value: "Get Flu Shot",
         key: Math.random().toString(),
-      },
+      }
     ]);
     if(route.params
          != null) {
