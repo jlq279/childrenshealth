@@ -6,8 +6,10 @@ import CameraScreen from './CameraScreen';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// const firebase = require('firebase/app');
+import firebase from "firebase/app";
+
+// import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,22 +27,29 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const app = firebase.initializeApp(firebaseConfig);
+
 import { getDatabase, ref, onValue } from 'firebase/database';
+import fbdb from 'firebase/database';
 
 
-// setupHighscoreListener(userId) {const db = getDatabase();
-//   const reference = ref(db, 'users/' + userId);
-//   onValue(reference, (snapshot) => {
-//     const highscore = snapshot.val().highscore;
-//     console.log("New high score: " + highscore);
-//   });
-// }
+function storeHighScore(userId, score) {
+  Object.keys(fbdb).forEach(console.log)
+  console.log('userId', userId)
+  const db = fbdb.getDatabase();
+  const reference = fbdb.ref(db, 'users/' + userId);
+  set(fbdb.ref(db, 'users/' + userId), {
+    highscore: score,
+  });
+}
+
 
 const App = () => {
-  console.log("success", app);
+  storeHighScore('jimmy', 5);
+
   const Stack = createNativeStackNavigator();
+
+
 
 
   return (
