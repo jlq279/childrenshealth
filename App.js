@@ -1,14 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
-import HomeScreen from './HomeScreen';
-import CameraScreen from './CameraScreen';
+import HomeScreen from './Components/HomeScreen';
+import CameraScreen from './Components/CameraScreen';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
 const App = () => {
 
   const Stack = createNativeStackNavigator();
-
+  
+      
   return (
     <NavigationContainer>
       <Stack.Navigator>

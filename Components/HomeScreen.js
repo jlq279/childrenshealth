@@ -1,36 +1,65 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import { Icon } from "react-native-elements"
+import styled from "styled-components";
+import TodoList from './TodoList';
+
 
 const HomeScreen = ({navigation, route}) => {
     const todoItems = ["Quest 1", "Quest 2"];
     const [test, testState] = useState(0);
+    const [data, setData] = useState([
+      {
+        value: "value0",
+        key: Math.random().toString(),
+      },
+      {
+        value: "value1",
+        key: Math.random().toString(),
+      },
+      {
+        value: "value2",
+        key: Math.random().toString(),
+      },
+    ]);
     if(route.params
          != null) {
         console.log(route.params.verify);
         console.log(route.params.taskNumber);
     }
+    const ComponentContainer = styled.View`
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    `;
     return (
         <View style={styles.container}>
         <Button title="navigation tester" onPress={() => navigation.navigate("CameraScreen", {taskNumber:1})} />
         <View style={styles.profile} />
         <Text style={styles.name}>Ben Dover</Text>
-        <Text style={styles.level}>Level: {6969}</Text>
+        <Text style={styles.level}>Level: 6969</Text>
         <Text style={styles.quests}>Quest</Text>
         <Text style={styles.missionText}>Your Mission</Text>
-        <FlatList
-          style={{ height: 500, width: 200, top: 365 }}
-          data={todoItems}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item, index }) => {
-            return (
-              <View style={{ width: 100, height: 100 }}>
-                <Text>{item}</Text>
-              </View>
-            )
-          }} />
+         <ComponentContainer style = {{position: 'relative', top:300}}>
+        {/* <View>
+          <StatusBar barStyle="light-content" 
+             backgroundColor="midnightblue" />
+        </View> */}
+
+        <View>
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.key}
+            renderItem={({ item }) => (
+              <TodoList item={item} />
+            )}
+          />
+
+        </View>
+      </ComponentContainer>
         <View style={styles.progressBar} />
-        <View style={styles.progressBarBG} />
+        <View style={styles.progressBarBG} /> 
         <View style={styles.selectBoxes}>
           <View style={{ textAlignVertical: 'center', width: 200, height: 40, backgroundColor: 'red' }}>
             <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>Mission Brief</Text>
@@ -42,6 +71,7 @@ const HomeScreen = ({navigation, route}) => {
             <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>The Shop</Text>
           </View>
         </View>
+        
         {/* <Image
           style={styles.stretch}
           source={{
@@ -99,7 +129,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 24,
-    lineHeight: 28,
+    // lineHeight: 28,
 
     color: '#000000',
   },
