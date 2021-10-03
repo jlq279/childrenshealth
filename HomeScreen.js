@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
+import { Image, StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import { Icon } from "react-native-elements"
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation, route}) => {
     const todoItems = ["Quest 1", "Quest 2"];
     const [test, testState] = useState(0);
+    if(route.params
+         != null) {
+        console.log(route.params.verify);
+        console.log(route.params.taskNumber);
+    }
     return (
         <View style={styles.container}>
-        <Button title="navigation tester" onPress={() => navigation.navigate("CameraScreen")} />
+        <Button title="navigation tester" onPress={() => navigation.navigate("CameraScreen", {taskNumber:1})} />
+        <Button title="Visualize Diagnosis" onPress={() => navigation.navigate("VisualizeDiagnosis")}/>
         <View style={styles.profile} />
         <Text style={styles.name}>Ben Dover</Text>
         <Text style={styles.level}>Level: {6969}</Text>
