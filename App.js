@@ -1,15 +1,17 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useState } from 'react';
 import HomeScreen from './Components/HomeScreen';
 import CameraScreen from './Components/CameraScreen';
+import StatusUpdates from './Components/StatusUpdates';
+import VisualizeDiagnosis from './Components/VisualizeDiagnosis';
 import ShopScreen from './Components/ShopScreen';
+import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
 const App = () => {
 
   const Stack = createNativeStackNavigator();
-  
-      
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -18,12 +20,12 @@ const App = () => {
           component={HomeScreen}
         />
         <Stack.Screen name="CameraScreen" component={CameraScreen} />
+        <Stack.Screen name="VisualizeDiagnosis" component={VisualizeDiagnosis} />
+        <Stack.Screen name="StatusUpdates" component={StatusUpdates} />
         <Stack.Screen name="ShopScreen" component={ShopScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-
 
 export default App;
