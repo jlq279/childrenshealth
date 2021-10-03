@@ -1,38 +1,59 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { useState } from 'react';
-import HomeScreen from './HomeScreen';
-import CameraScreen from './CameraScreen';
-import VisualizeDiagnosis from './VisualizeDiagnosis';
+import React, { Component } from 'react';
+import FirstScreen from './Components/FirstScreen';
+import HomeScreen from './Components/HomeScreen';
+import CameraScreen from './Components/CameraScreen';
+import ShopScreen from './Components/ShopScreen';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
+import { render } from 'react-dom';
 
-import firebase from './firebase';
+export default class App extends Component {
+  
+  
+  state = {
+    quests: []
+  }
+  addQuest = (quest) => {
+    const quests = this.state.quests
+    quests.push(quest)
+    this.setState({cities})
+  }
+  addMethod = (method, quest) =>{
+    const index = this.state.quests.findIndex(item => {
+      return item.id == quest.id
+    })
+  
+    const chosenQuest = this.state.quests[index]
+    chosenQuest.method.push(method)
+    const quests = [
+    ...this.state.quests.slice(0, index),
+    chosenQuest,
+    ...this.state.quests.slice(index + 1)
+  ]
+  this.setState({
+    quests
+  })
+} 
 
-const store = firebase.firestore()
-
-const App = () => {
-
-  console.log('store', store.collection("Asthma").onSnapshot(snapshot => {
-    var cities = [];
-      snapshot.forEach(function(doc) {
-          cities.push(doc.data());
-      });
-      console.log("Current: ", JSON.stringify(cities[0]));
-  }))
-
-  const Stack = createNativeStackNavigator();
-
-  return (
-    <NavigationContainer>
+  render(){
+    const Stack = createNativeStackNavigator();
+    return(
+      
+      <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name = "FirstScreen"
+          component={FirstScreen}
+        />
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
         />
         <Stack.Screen name="CameraScreen" component={CameraScreen} />
-        <Stack.Screen name="VisualizeDiagnosis" component={VisualizeDiagnosis} />
+        <Stack.Screen name="ShopScreen" component={ShopScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
-}
-export default App;
+    )
+    }
+  }
