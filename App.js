@@ -6,7 +6,19 @@ import CameraScreen from './CameraScreen';
 import VisualizeDiagnosis from './VisualizeDiagnosis';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
+import firebase from './firebase';
+
+const store = firebase.firestore()
+
 const App = () => {
+
+  console.log('store', store.collection("Asthma").onSnapshot(snapshot => {
+    var cities = [];
+      snapshot.forEach(function(doc) {
+          cities.push(doc.data());
+      });
+      console.log("Current: ", JSON.stringify(cities[0]));
+  }))
 
   const Stack = createNativeStackNavigator();
 
