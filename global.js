@@ -1,0 +1,1 @@
+global.numBalloons = 1000;

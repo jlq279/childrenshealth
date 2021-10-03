@@ -4,43 +4,18 @@ import React, { Component } from 'react';
 import FirstScreen from './Components/FirstScreen';
 import HomeScreen from './Components/HomeScreen';
 import CameraScreen from './Components/CameraScreen';
+import StatusUpdates from './Components/StatusUpdates';
+import VisualizeDiagnosis from './Components/VisualizeDiagnosis';
 import ShopScreen from './Components/ShopScreen';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import { render } from 'react-dom';
 
-export default class App extends Component {
-  
-  
-  state = {
-    quests: []
-  }
-  addQuest = (quest) => {
-    const quests = this.state.quests
-    quests.push(quest)
-    this.setState({cities})
-  }
-  addMethod = (method, quest) =>{
-    const index = this.state.quests.findIndex(item => {
-      return item.id == quest.id
-    })
-  
-    const chosenQuest = this.state.quests[index]
-    chosenQuest.method.push(method)
-    const quests = [
-    ...this.state.quests.slice(0, index),
-    chosenQuest,
-    ...this.state.quests.slice(index + 1)
-  ]
-  this.setState({
-    quests
-  })
-} 
+const App = () => {
 
-  render(){
-    const Stack = createNativeStackNavigator();
-    return(
-      
-      <NavigationContainer>
+  const Stack = createNativeStackNavigator();
+
+  return (
+    <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name = "FirstScreen"
@@ -51,9 +26,13 @@ export default class App extends Component {
           component={HomeScreen}
         />
         <Stack.Screen name="CameraScreen" component={CameraScreen} />
+        <Stack.Screen name="VisualizeDiagnosis" component={VisualizeDiagnosis} />
+        <Stack.Screen name="StatusUpdates" component={StatusUpdates} />
         <Stack.Screen name="ShopScreen" component={ShopScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-    )
-    }
-  }
+
+  );
+}
+
+export default App;
