@@ -1,10 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { useState } from 'react';
+import React from 'react';
 import HomeScreen from './Components/HomeScreen';
 import CameraScreen from './Components/CameraScreen';
 import ShopScreen from './Components/ShopScreen';
-import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
 const App = () => {
 

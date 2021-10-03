@@ -1,112 +1,131 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
-import { Icon } from "react-native-elements"
+import { StyleSheet, Text, View, Button, Image, ImageBackground, SafeAreaView, ScrollView } from 'react-native';
 import styled from "styled-components";
 import TodoList from './TodoList';
-import { IconButton, Colors } from 'react-native-paper';
+import { IconButton, ProgressBar, Colors } from 'react-native-paper';
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-// // import { FontAwesomeIcon } from '@fortawesome/fontawesome-svg-core'
-// // import { FontAwesomeIcon } from '@fortawesome/free-solid-svg-icons'
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+const HomeScreen = ({ navigation, route }) => {
+  const todoItems = ["Quest 1", "Quest 2"];
+  const [test, testState] = useState(0);
 
-const HomeScreen = ({navigation, route}) => {
-    const todoItems = ["Quest 1", "Quest 2"];
-    const [test, testState] = useState(0);
-    
-    const [data, setData] = useState([
-      {
-        value: "Take Inhaler",
-        key: Math.random().toString(),
-      },
-      {
-        value: "Exercise",
-        key: Math.random().toString(),
-      },
-      {
-        value: "Get Flu Shot",
-        key: Math.random().toString(),
-      }
-    ]);
-    
-    const ComponentContainer = styled.View`
+  const [data, setData] = useState([
+    {
+      value: "Take Inhaler",
+      key: Math.random().toString(),
+    },
+    {
+      value: "Exercise",
+      key: Math.random().toString(),
+    },
+    {
+      value: "Get Flu Shot",
+      key: Math.random().toString(),
+    },
+    {
+      value: "Get Flu Shot",
+      key: Math.random().toString(),
+    },
+    {
+      value: "Get Flu Shot",
+      key: Math.random().toString(),
+    },
+    {
+      value: "Get Flu Shot",
+      key: Math.random().toString(),
+    }
+  ]);
+
+  const ComponentContainer = styled.View`
       height: 100%;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     `;
-    let taskStatuses = [];
-    return (
-        <View style={styles.container}>
-        <View style={styles.profile} />
-        <Text style={styles.name}>Ben Dover</Text>
-        <Text style={styles.level}>Level: 6969</Text>
-        {/* <Text style={styles.credits}>Credits: 1000</Text>*/} 
-        <Text style={styles.quests}>Quest</Text>
-        <Text style={styles.missionText}>Your Mission</Text>
+  return (
 
-        <IconButton icon="store" color={Colors.black} size={50} onPress = {() => navigation.navigate("ShopScreen")}/>
+    <View style={{ flexDirection: "column", justifyContent: 'center' }}>
 
-         <ComponentContainer style = {{position: 'relative', top:300}}>
-        {/* <View>
-          <StatusBar barStyle="light-content" 
-             backgroundColor="midnightblue" />
-        </View> */}
-
-        <View>
-          <FlatList
-            data={data}
-            keyExtractor={(item) => item.key}
-            renderItem={({ item }) => (
-              <TodoList navigation={navigation} item={item} />
-            )}
-          />
-
-        </View>
-      </ComponentContainer>
-      {/* <Button title="Shop" style={{width: "auto", color: "#f0f"}}/>
-      <View style={{ position: 'relative', top: 140, width: 200, height: 40, backgroundColor: 'red' }}>
-        <Entypo name="shop" size={20} color="midnightblue" />
-      </View> */}
-      {/* <Entypo name="circle" size={20} color="midnightblue" /> */}
-        {/* <View style={styles.progressBar} />
-        <View style={styles.progressBarBG} />  */}
-        
-        {/* <FontAwesomeIcon icon={faCoffee} />
-        <FontAwesomeIcon icon={faCoffee} onPress={() => navigation.navigate("Shop")}/> */}
-        <View style={styles.selectBoxes}>
-          <View style={{ textAlignVertical: 'center', width: 200, height: 40, backgroundColor: 'red' }}>
-            <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>Mission Brief</Text>
-          </View>
-          <View style={{ position: 'relative', top: 20, width: 200, height: 40, backgroundColor: 'red' }}>
-            <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>Status Update</Text>
-          </View>
-        </View>
-        
-        {/* <Image
-          style={styles.stretch}
-          source={{
-            uri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==',
-          }}
-        /> */}
-        {/* <Button
-          title="Press me"
-          onPress={() => Alert.alert('Simple Button pressed')}
-        /> */}
+      <View style={{ flexDirection: "row", margin: 15, marginBottom: 25, height: '5%', justifyContent: 'center' }}>
+        <Image source={require('../logo.png')} resizeMode='contain' style={{ height: 100, width: '100%' }} />
       </View>
-    );
+      <View style={{ flexDirection: "row", margin: 15, height: '2%', justifyContent: 'center' }}>
+        <View style={{ flexDirection: "column", width: '75%', height: '100%' }}>
+          <View style={{ flexDirection: "row" }}>
+            <Text>7500/10000 balloons</Text>
+            {/* <TouchableOpacity
+              style={styles.buttonStyle}
+              activeOpacity={0.5}>
+              <Image
+                source={require('../balloon.png')}
+                style={styles.buttonImageIconStyle}
+              />
+            </TouchableOpacity> */}
+          </View>
+          <ProgressBar progress={0.75} color={'#55BCF6'} style={{ height: '100%', borderRadius: 50 }} />
+        </View>
+        <View style={{ flexDirection: "row", height: '100%', alignItems: 'center', marginTop: 12 }}>
+          <IconButton icon="store" color={Colors.black} size={50} onPress={() => navigation.navigate("ShopScreen")} />
+        </View>
+      </View>
+
+      <View style={{ flexDirection: "row", alignItems: "flex-start", justifyContent: 'center', height: '25%' }}>
+        <View style={{ flexDirection: "column", alignSelf: 'flex-start', alignItems: "flex-start", width: '45%', height: '100%', marginLeft: 10, marginTop: 10, marginRight: 5 }}>
+          <View style={{ height: '100%', width: '100%' }}>
+            <ImageBackground source={require('../jakefromstatefarm.jpeg')} style={{ height: "100%", width: '100%', justifyContent: "center" }} />
+          </View>
+        </View>
+
+        <View style={{ flexDirection: "column", alignSelf: 'flex-start', alignItems: "flex-start", width: '45%', marginLeft: 5, marginTop: 10, marginRight: 10 }}>
+          <View style={{ flexDirection: "row", alignItems: "flex-start", margin: 10 }}>
+            <Text style={styles.name}>Ben Dover</Text>
+          </View>
+          <View style={{ flexDirection: "row", marginLeft: 10 }}>
+            <Text style={styles.level}>Level: 6969</Text>
+          </View>
+          <View style={{ flexDirection: "row", margin: 5 }}>
+            <TouchableOpacity style={{ backgroundColor: '#F65555', padding: 7, width: 150, borderRadius: 10 }}>
+              <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Mission Brief</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ flexDirection: "row", margin: 5 }}>
+            <TouchableOpacity style={{ backgroundColor: '#F65555', padding: 7, width: 150, borderRadius: 10 }}>
+              <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Status Update</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+      <View style={{ flexDirection: "row", alignSelf: 'center', marginTop: 10 }}>
+        <View style={{ flexDirection: "column" }}>
+          <Text style={{ fontFamily: 'Roboto', fontStyle: 'normal', fontWeight: 'bold', fontSize: 24, marginLeft: 25, marginTop: 20, marginBottom: 5 }}>Quests</Text>
+          <View style={{ alignItems: 'center' }}>
+
+            <ScrollView style={styles.scrollView}>
+              {
+                data.map((item) => (
+                  <View key={item.key}>
+                    <TodoList navigation={navigation} item={item} />
+                  </View>
+                ))
+              }
+            </ScrollView>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
 }
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 50,
+  scrollView: {
+    height: '60%',
+    width: '100%',
+    padding: 20,
+    borderRadius: 5,
   },
   name: {
-    position: 'absolute',
     width: 139,
     height: 35,
-    left: 201,
-    top: 33,
-
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: 'bold',
@@ -116,89 +135,44 @@ const styles = StyleSheet.create({
     color: '#000000',
   },
   level: {
-    position: 'absolute',
-    height: 23,
-    left: 201,
-    top: 76,
-
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: 'normal',
-    fontSize: 20,
-    lineHeight: 23,
+    fontSize: 16,
 
     color: '#000000',
   },
   quests: {
-    position: 'absolute',
-    // width: 76,
-    height: 28,
-    left: 24,
-    top: 320,
-
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 24,
-    // lineHeight: 28,
 
     color: '#000000',
   },
   todo: {
-    position: 'absolute',
     width: 335,
     height: 53,
-    left: 8,
-    top: 365,
   },
-  progressBar: {
-    position: 'absolute',
-    width: 228.09,
-    height: 25,
-    left: 6,
-    top: 589,
-
-    backgroundColor: '#55BCF6',
-    // boxShadow: 0, 4, 30, rgba(0, 0, 0, 0.15),
-    borderRadius: 60,
+  buttonImageIconStyle: {
+    height: 20,
+    width: 20,
+    resizeMode: 'contain',
+    borderRadius: 50,
+    backgroundColor: 'grey'
   },
-  progressBarBG: {
-    position: 'absolute',
-    width: 335.97,
-    height: 25,
-    left: 7.03,
-    top: 589,
-
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    // box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15),
-    borderRadius: 60,
+  buttonStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 40,
+    top: -10,
+    borderRadius: 50,
   },
-  profile: {
-    position: 'absolute',
-    width: 179,
-    height: 253,
-    left: 9,
-    top: 38,
-
-    //backgroundImage: 'url(cave.jpg)',
-    borderRadius: 25,
-  },
-  stretch: {
-    width: 50,
-    height: 200,
-    resizeMode: 'stretch',
-  },
-  missionText: {
-    position: 'absolute',
-    fontSize: 20,
-    top: 136,
-    left: 245,
-  },
-  selectBoxes: {
-    position: 'absolute',
-    height: 281,
-    top: 176,
-    left: 205,
+  contentContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'lightgrey',
+    paddingBottom: 50
   }
 });
 export default HomeScreen;
