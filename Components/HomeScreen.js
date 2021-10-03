@@ -67,7 +67,7 @@ const HomeScreen = ({ navigation, route }) => {
     <View style={{ flexDirection: "column", justifyContent: 'center' }}>
 
       <View style={{ flexDirection: "row", top: '3%', margin: 25, marginBottom: 25, height: '5%', justifyContent: 'center' }}>
-        <Image source={require('../logo.png')} resizeMode='contain' style={{ height: 100, width: '100%' }} />
+        <Image source={{uri:"https://www.friscoisd.org/images/default-source/athletics-images/children's-health.png?sfvrsn=7f9f43d7_10"}} resizeMode='contain' style={{ height: 100, width: '100%' }} />
       </View>
       <View style={{ flexDirection: "row", margin: 5, height: '2%', justifyContent: 'center' }}>
         <View style={{ flexDirection: "column", width: '75%', height: '100%' }}>
@@ -92,7 +92,7 @@ const HomeScreen = ({ navigation, route }) => {
       <View style={{ flexDirection: "row", alignItems: "flex-start", justifyContent: 'center', height: '25%' }}>
         <View style={{ flexDirection: "column", alignSelf: 'flex-start', alignItems: "flex-start", width: '45%', height: '100%', marginLeft: 10, marginTop: 10, marginRight: 5 }}>
           <View style={{ height: '100%', width: '100%' }}>
-            <ImageBackground source={require('../jakefromstatefarm.jpeg')} style={{ height: "100%", width: '100%', justifyContent: "center" }} />
+            <ImageBackground source={{uri:'https://i.kym-cdn.com/entries/icons/facebook/000/017/912/uhh_khakis.jpg'}} style={{ height: "100%", width: '100%', justifyContent: "center" }} />
           </View>
         </View>
 
