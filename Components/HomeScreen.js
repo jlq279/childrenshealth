@@ -3,7 +3,12 @@ import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import { Icon } from "react-native-elements"
 import styled from "styled-components";
 import TodoList from './TodoList';
+import { IconButton, Colors } from 'react-native-paper';
 
+// // import { FontAwesomeIcon } from '@fortawesome/fontawesome-svg-core'
+// // import { FontAwesomeIcon } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 const HomeScreen = ({navigation, route}) => {
     const todoItems = ["Quest 1", "Quest 2"];
@@ -23,25 +28,25 @@ const HomeScreen = ({navigation, route}) => {
         key: Math.random().toString(),
       }
     ]);
-    if(route.params
-         != null) {
-        console.log(route.params.verify);
-        console.log(route.params.taskNumber);
-    }
+    
     const ComponentContainer = styled.View`
       height: 100%;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     `;
+    let taskStatuses = [];
     return (
         <View style={styles.container}>
-        <Button title="navigation tester" onPress={() => navigation.navigate("CameraScreen", {taskNumber:1})} />
         <View style={styles.profile} />
         <Text style={styles.name}>Ben Dover</Text>
         <Text style={styles.level}>Level: 6969</Text>
+        {/* <Text style={styles.credits}>Credits: 1000</Text>*/} 
         <Text style={styles.quests}>Quest</Text>
         <Text style={styles.missionText}>Your Mission</Text>
+
+        <IconButton icon="store" color={Colors.black} size={50} onPress = {() => navigation.navigate("ShopScreen")}/>
+
          <ComponentContainer style = {{position: 'relative', top:300}}>
         {/* <View>
           <StatusBar barStyle="light-content" 
@@ -53,23 +58,28 @@ const HomeScreen = ({navigation, route}) => {
             data={data}
             keyExtractor={(item) => item.key}
             renderItem={({ item }) => (
-              <TodoList item={item} />
+              <TodoList navigation={navigation} item={item} />
             )}
           />
 
         </View>
       </ComponentContainer>
-        <View style={styles.progressBar} />
-        <View style={styles.progressBarBG} /> 
+      {/* <Button title="Shop" style={{width: "auto", color: "#f0f"}}/>
+      <View style={{ position: 'relative', top: 140, width: 200, height: 40, backgroundColor: 'red' }}>
+        <Entypo name="shop" size={20} color="midnightblue" />
+      </View> */}
+      {/* <Entypo name="circle" size={20} color="midnightblue" /> */}
+        {/* <View style={styles.progressBar} />
+        <View style={styles.progressBarBG} />  */}
+        
+        {/* <FontAwesomeIcon icon={faCoffee} />
+        <FontAwesomeIcon icon={faCoffee} onPress={() => navigation.navigate("Shop")}/> */}
         <View style={styles.selectBoxes}>
           <View style={{ textAlignVertical: 'center', width: 200, height: 40, backgroundColor: 'red' }}>
             <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>Mission Brief</Text>
           </View>
           <View style={{ position: 'relative', top: 20, width: 200, height: 40, backgroundColor: 'red' }}>
             <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>Status Update</Text>
-          </View>
-          <View style={{ position: 'relative', top: 40, width: 200, height: 40, backgroundColor: 'red' }}>
-            <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>The Shop</Text>
           </View>
         </View>
         

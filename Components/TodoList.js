@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { StyleSheet, View, CheckBox } from "react-native";
 import styled from "styled-components";
 import { Entypo } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function TodoList({ item }) {
+export default function TodoList({ navigation, item }) {
     const [isSelected, setSelection] = useState(false);
     return (
-        <ComponentContainer >
-            <View>
-
+        <ComponentContainer>
+            <TouchableOpacity onPress = {() => {
+              navigation.navigate("CameraScreen", {taskNumber: item.key})
+              }}>
                 <ListContainer>
                     <CheckBox 
                         value={isSelected}
@@ -20,8 +22,8 @@ export default function TodoList({ item }) {
                         <TextItem>{item.value}</TextItem>
                     </View>
                 </ListContainer>
-            </View>
-                    </ComponentContainer>
+            </TouchableOpacity>
+        </ComponentContainer>
     );
 }
 

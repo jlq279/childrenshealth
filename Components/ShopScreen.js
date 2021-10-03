@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
-import { Icon } from "react-native-elements"
-import styled from "styled-components";
 
-const Shop = () => {
+const ShopScreen = () => {
     return (
         <Text>Some text here</Text>
     )
 }
 
-export default Shop;
+export default ShopScreen;

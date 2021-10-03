@@ -92,7 +92,9 @@ export default function CameraScreen({ navigation, route}) {
             <TouchableOpacity onPress={cancelPreview} style={styles.closeButton}>
                 <Icon name="close"/>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("HomeScreen", {verify:"yea boi", taskNumber:route.params.taskNumber})} style={styles.verifyButton}>
+            <TouchableOpacity onPress={() => {
+                navigation.navigate("HomeScreen", {verify: true, taskNumber:route.params.taskNumber});
+            }} style={styles.verifyButton}>
                 <Icon name="check"/>
             </TouchableOpacity>
         </View>
