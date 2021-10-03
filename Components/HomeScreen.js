@@ -10,25 +10,32 @@ import { IconButton, Colors } from 'react-native-paper';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
+
+
 const HomeScreen = ({navigation, route}) => {
     const todoItems = ["Quest 1", "Quest 2"];
     const [test, testState] = useState(0);
-    
+
     const [data, setData] = useState([
       {
         value: "Take Inhaler",
-        key: Math.random().toString(),
+        key: 0,
+        verify: false
       },
       {
         value: "Exercise",
-        key: Math.random().toString(),
+        key: 1,
+        verify: false
       },
       {
         value: "Get Flu Shot",
-        key: Math.random().toString(),
+        key: 2,
+        verify: false
       }
     ]);
     
+      data[route.param.taskNumber] = verify;
+
     const ComponentContainer = styled.View`
       height: 100%;
       flex-direction: column;
