@@ -34,7 +34,11 @@ const HomeScreen = ({navigation, route}) => {
       }
     ]);
     
-      data[route.param.taskNumber] = verify;
+      console.log("route:  ", route);
+      console.log("data: ",data)
+      //const new_data= data;
+      data[route.params.taskNumber].verify = route.params.verify;
+      //setData(new_data);
 
     const ComponentContainer = styled.View`
       height: 100%;

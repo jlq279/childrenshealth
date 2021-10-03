@@ -5,7 +5,8 @@ import { Entypo } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function TodoList({ navigation, item }) {
-    const [isSelected, setSelection] = useState(item.param.verify);
+    console.log("item :", item);
+    const [isSelected, setSelection] = useState(item.verify);
     return (
         <ComponentContainer>
             <TouchableOpacity onPress = {() => {

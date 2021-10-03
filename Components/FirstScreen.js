@@ -21,7 +21,7 @@ const FirstScreen = ({navigation}) => {
         
         <Button
           title="Press me"
-          onPress={() =>{navigation.navigate("HomeScreen", {taskNumber: 0});
+          onPress={() =>{navigation.navigate("HomeScreen", {verify: false,taskNumber: 0});
             } 
         }
         /> 
