@@ -35,6 +35,22 @@ const HomeScreen = ({ navigation, route }) => {
     {
       value: "Get Flu Shot",
       key: Math.random().toString(),
+    },
+    {
+      value: "Get Flu Shot",
+      key: Math.random().toString(),
+    },
+    {
+      value: "Get Flu Shot",
+      key: Math.random().toString(),
+    },
+    {
+      value: "Get Flu Shot",
+      key: Math.random().toString(),
+    },
+    {
+      value: "Get Flu Shot",
+      key: Math.random().toString(),
     }
   ]);
 
@@ -48,7 +64,7 @@ const HomeScreen = ({ navigation, route }) => {
 
     <View style={{ flexDirection: "column", justifyContent: 'center' }}>
 
-      <View style={{ flexDirection: "row", margin: 15, marginBottom: 25, height: '5%', justifyContent: 'center' }}>
+      <View style={{ flexDirection: "row", top: '3%', margin: 25, marginBottom: 25, height: '5%', justifyContent: 'center' }}>
         <Image source={require('../logo.png')} resizeMode='contain' style={{ height: 100, width: '100%' }} />
       </View>
       <View style={{ flexDirection: "row", margin: 5, height: '2%', justifyContent: 'center' }}>
@@ -102,14 +118,13 @@ const HomeScreen = ({ navigation, route }) => {
           <View style={{ flexDirection: "row", margin: 15, height: '2%', justifyContent: 'center' }}>
             <View style={{ flexDirection: "column", width: '75%', height: '100%' }}>
               <View style={{ flexDirection: "row" }}>
-                <Text style={{ fontFamily: 'Roboto', fontStyle: 'normal', fontWeight: 'bold', fontSize: 24, marginBottom: 25 }}>Quests</Text>
+                <Text style={{ fontFamily: 'Roboto', fontStyle: 'normal', fontWeight: 'bold', fontSize: 24, marginBottom: 15 }}>Quests</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", height: '100%', alignItems: 'center', marginTop: 12 }}>
               <IconButton icon="store" color={Colors.black} size={50} onPress={() => navigation.navigate("ShopScreen")} />
             </View>
           </View>
-          {/* <Text style={{ fontFamily: 'Roboto', fontStyle: 'normal', fontWeight: 'bold', fontSize: 24, marginLeft: 25, marginTop: 20, marginBottom: 5 }}>Quests</Text> */}
           <View style={{ alignItems: 'center' }}>
 
             <ScrollView style={styles.scrollView}>
@@ -129,9 +144,9 @@ const HomeScreen = ({ navigation, route }) => {
 }
 const styles = StyleSheet.create({
   scrollView: {
-    height: '60%',
+    height: '70%',
     width: '100%',
-    marginTop: 15,
+    marginTop: 10,
     padding: 20,
     borderRadius: 5,
   },
