@@ -10,7 +10,7 @@ export default function TodoList({ navigation, item }) {
     return (
         <ComponentContainer>
             <TouchableOpacity onPress = {() => {
-              navigation.navigate("CameraScreen", {taskNumber: item.key})
+              navigation.navigate("CameraScreen", {taskNumber: item.key, value: item.value})
               }}>
                 <ListContainer>
                     <CheckBox 

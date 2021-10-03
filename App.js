@@ -8,6 +8,37 @@ import ShopScreen from './Components/ShopScreen';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import { render } from 'react-dom';
 
+
+import firebase from './firebase';
+
+const store = firebase.firestore();
+
+// store.collection("Asthma").onSnapshot(snapshot => {
+//   var cities = [];
+//     snapshot.forEach(function(doc) {
+//         cities.push(doc.data());
+//     });
+//     console.log("Current: ", cities[0].level);
+// })
+
+
+
+
+store.collection("David").onSnapshot(snapshot => {
+      var cities = [];
+        snapshot.forEach(function(doc) {
+            cities.push(doc.data());
+        });
+        console.log("Level: ", cities[5].Level);
+        global.hero = cities[0];
+    })
+
+    //console.log(global.hero);
+
+const res = store.collection('Asthma').doc('Mike O.').set({level: 6});
+
+
+
 export default class App extends Component {
   
   

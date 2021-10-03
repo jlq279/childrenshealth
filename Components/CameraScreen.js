@@ -15,6 +15,10 @@ const WINDOW_HEIGHT = Dimensions.get("window").height;
 const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
 const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
 
+import firebase from '../firebase';
+
+const store = firebase.firestore();
+
 
 export default function CameraScreen({ navigation, route}) {
     const [hasPermission, setHasPermission] = useState(null);
@@ -92,6 +96,7 @@ export default function CameraScreen({ navigation, route}) {
             <TouchableOpacity onPress={cancelPreview} style={styles.closeButton}>
                 <Icon name="close"/>
             </TouchableOpacity>
+            
             <TouchableOpacity onPress={() => {
                 navigation.navigate("HomeScreen", {verify: true, taskNumber:route.params.taskNumber});
             }} style={styles.verifyButton}>

@@ -4,36 +4,48 @@ import { Icon } from "react-native-elements"
 import styled from "styled-components";
 import TodoList from './TodoList';
 import { IconButton, Colors } from 'react-native-paper';
-
+import firebase from '../firebase';
 
 // // import { FontAwesomeIcon } from '@fortawesome/fontawesome-svg-core'
 // // import { FontAwesomeIcon } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
+const store = firebase.firestore();
+
 
 
 const HomeScreen = ({navigation, route}) => {
     const todoItems = ["Quest 1", "Quest 2"];
     const [test, testState] = useState(0);
+   
 
-    const [data, setData] = useState([
-      {
-        value: "Take Inhaler",
-        key: 0,
-        verify: false
-      },
-      {
-        value: "Exercise",
-        key: 1,
-        verify: false
-      },
-      {
-        value: "Get Flu Shot",
-        key: 2,
-        verify: false
-      }
-    ]);
+    const [lev, setLev] = useState(0);
+
+store.collection("David").onSnapshot(snapshot => {
+  var cities = [];
+    snapshot.forEach(function(doc) {
+        cities.push(doc.data());
+    });
+    console.log("Level: ", cities[5].Level);
+    setLev( cities[5].Level);
+})
+
+  // console.log("dataIndex: ", store.collection('David').map(doc=> doc.data()))
+
+  console.log(global.hero);
+  let i = 0;
+  let g = Object.keys(global.hero).map(key => {
+    
+    let o = {};
+    o['value'] = key;
+    o['key'] = i++;
+    o['verify'] = global.hero[key];
+    return o;
+   })
+
+    const [data, setData] = useState(g);
+    
     
       console.log("route:  ", route);
       console.log("data: ",data)
@@ -52,7 +64,7 @@ const HomeScreen = ({navigation, route}) => {
         <View style={styles.container}>
         <View style={styles.profile} />
         <Text style={styles.name}>Ben Dover</Text>
-        <Text style={styles.level}>Level: 6969</Text>
+        <Text style={styles.level}>Level: {lev}</Text>
         {/* <Text style={styles.credits}>Credits: 1000</Text>*/} 
         <Text style={styles.quests}>Quest</Text>
         <Text style={styles.missionText}>Your Mission</Text>
